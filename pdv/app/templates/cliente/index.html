@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<div class="row">
+    <div class="col-12">
+        <a href="{% url 'cadastrar_cliente' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar Novo Cliente"></a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 table-responsive">
+
+        <table class="table table-sm table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+      <th scope="col">Editar / Apagar</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cliente in clientes %}
+    <tr>
+      <th scope="row">{{cliente.id}}</th>
+      <td>{{cliente.nome}}</td>
+      <td>{{cliente.email}}</td>
+      <td>
+          <a href="{% url 'editar_cliente' cliente.id %}"><input type="button" class="btn btn-sm btn-primary" value="Alterar"></a>
+          &nbsp;&nbsp;
+          <a href="{% url 'remover_cliente' cliente.id %}"><input type="button" class="btn btn-sm btn-danger" value="Apagar"></a>
+      </td>
+    </tr>
+      {% endfor %}
+
+  </tbody>
+</table>
+
+    </div>
+</div>
+
+
+{% endblock conteudo %}

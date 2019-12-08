@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<div class="row">
+    <div class="col-12">
+        <a href="{% url 'cadastrar_venda' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar Nova Venda"></a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 table-responsive">
+        <table class="table table-sm table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Preço</th>
+      <th scope="col">Editar / Apagar</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for venda in vendas %}
+    <tr>
+      <th scope="row">{{venda.id}}</th>
+
+    </tr>
+      {% endfor %}
+
+  </tbody>
+</table>
+
+    </div>
+</div>
+
+
+{% endblock conteudo %}

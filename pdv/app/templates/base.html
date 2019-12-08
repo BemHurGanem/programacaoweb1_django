@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<style>
+    .bg{
+           background: #00897B;
+    }
+
+     .card-img-top{
+        max-height: 210px;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Ponto de Venda</title>
+    <link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg mb-4">
+      <a class="navbar-brand" href="#">Ponto de Venda</a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link"  href="{% url '' %}">Home</span></a>
+          </li>
+        </ul>
+      </div>
+</nav>
+<main role="main" class="container">
+{% block conteudo %}
+
+{% endblock conteudo %}
+</main>
+</body>
+</html>
