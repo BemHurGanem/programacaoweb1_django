@@ -16,5 +16,6 @@ urlpatterns = [
 
     path('listar_venda', listar_venda, name='listar_venda'),
     path('cadastrar_venda', cadastrar_venda, name="cadastrar_venda"),
-
+    path('editar_venda/<int:id>', editar_venda, name='editar_venda'),
+    path('remover_venda/<int:id>', remover_venda, name='remover_venda'),
 ]

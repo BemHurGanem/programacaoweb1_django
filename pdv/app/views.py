@@ -80,18 +80,31 @@ def remover_cliente(request, id):
 # VENDA
 def cadastrar_venda(request):
     form = VendaForm(request.POST)
-    produtoForm = ProdutoVendaForm(request.POST)
-    if form.is_valid() and produtoForm.is_valid():
+    if form.is_valid():
         form.save()
         return redirect('listar_venda')
     else:
         form = VendaForm()
-        produtoForm = ProdutoVendaForm()
 
-    return render(request, 'venda/venda_form.html', {'venda_form': form, 'produtovenda_form': produtoForm})
+    return render(request, 'venda/venda_form.html', {'venda_form': form})
 
 
 def listar_venda(request):
     vendas = Venda.objects.all()
     return render(request, 'venda/index.html', {'vendas': vendas})
 
+
+def editar_venda(request, id):
+    venda = Venda.objects.get(id=id)
+    form = VendaForm(request.POST or None, instance=venda)
+    if form.is_valid():
+        form.save()
+    return render(request, 'venda/venda_form.html', {'venda_form': form})
+
+
+def remover_venda(request, id):
+    venda = Venda.objects.get(id=id)
+    if request.method == "POST":
+        venda.delete()
+        return redirect('listar_venda')
+    return render(request, 'venda/confirma_exclusao.html', {'venda': venda})

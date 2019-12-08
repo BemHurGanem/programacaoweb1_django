@@ -13,8 +13,8 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Preço</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Data</th>
       <th scope="col">Editar / Apagar</th>
     </tr>
   </thead>
@@ -22,7 +22,13 @@
     {% for venda in vendas %}
     <tr>
       <th scope="row">{{venda.id}}</th>
-
+      <th scope="row">{{venda.cliente}}</th>
+      <th scope="row">{{venda.data_venda}}</th>
+      <td>
+          <a href="{% url 'editar_venda' venda.id %}"><input type="button" class="btn btn-sm btn-primary" value="Alterar"></a>
+          &nbsp;&nbsp;
+          <a href="{% url 'remover_venda' venda.id %}"><input type="button" class="btn btn-sm btn-danger" value="Apagar"></a>
+      </td>
     </tr>
       {% endfor %}
 
