@@ -40,3 +40,4 @@ class ProdutosVenda(models.Model):
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     venda = models.ForeignKey(Venda, on_delete=models.CASCADE)
     quantidade = models.IntegerField(null=False)
+    valor = models.DecimalField(null=False, decimal_places=2, max_digits=12)

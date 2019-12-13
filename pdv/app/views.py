@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from django.template import Library
+
 from .forms import ProdutoForm, ClienteForm, VendaForm, ProdutoVendaForm
-from .models import Produto, Cliente, Venda
+from .models import Produto, Cliente, Venda, ProdutosVenda
 
 
 def home(request):
@@ -86,7 +88,12 @@ def cadastrar_venda(request):
     else:
         form = VendaForm()
 
-    return render(request, 'venda/venda_form.html', {'venda_form': form})
+    produtos = Produto.objects.all()
+
+    produtosform = []
+    produtosform.append(ProdutoVendaForm())
+
+    return render(request, 'venda/venda_form.html', {'venda_form': form,  "produtos":produtos, "forms":produtosform})
 
 
 def listar_venda(request):

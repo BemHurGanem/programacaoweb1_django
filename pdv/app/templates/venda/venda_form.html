@@ -1,15 +1,53 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
-
 {% block conteudo %}
+
 <div class="row justify-content-center">
     <div class="col-sm-10 col-md-6">
 
         <form method="post">
             {% csrf_token %}
-
             {{venda_form |crispy }}
+
+            <div class="row">
+    <div class="col-12 table-responsive">
+
+        <table class="table table-sm table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Produto</th>
+      <th scope="col">Quantidade</th>
+      <th scope="col">Preço</th>
+      <th scope="col">Apagar</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <th scope="row">
+          <select name="produtos" class="form-control" required="" id="id_produtos" >
+            {% for produto in produtos %}
+              <option value="{{produto.id}}">{{produto.nome}}</option>
+            {% endfor %}
+        </select>
+
+      </th>
+      <td></td>
+      <td></td>
+      <td>&nbsp;&nbsp;
+      </td>
+    </tr>
+    <tr>
+
+    </tr>
+
+  </tbody>
+</table>
+
+    </div>
+</div>
+
 
             <div class="row justify-content-center">
                 <div class="col-7 mt-2">
@@ -25,4 +63,5 @@
 
     </div>
 </div>
+
 {% endblock conteudo %}

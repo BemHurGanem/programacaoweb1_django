@@ -14,13 +14,14 @@ class ClienteForm(forms.ModelForm):
 
 
 class VendaForm(forms.ModelForm):
+
     class Meta:
         model = Venda
-        # exclude = ('produtos',)
-        fields ='__all__'
+        exclude = ('produtos',)
 
 class ProdutoVendaForm(forms.ModelForm):
     class Meta:
         model = ProdutosVenda
-        exclude = ('venda',)
+        exclude = ('venda','valor')
+
 
